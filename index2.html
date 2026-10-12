@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纸上繁星 - 导航主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background-color: #18191c; /* B站深色背景 */
+            color: #e5e9ef;
+        }
+        /* 顶部导航栏 */
+        .header {
+            background-color: #fb7299;
+            display: flex;
+            align-items: center;
+            padding: 14px 24px;
+            gap:16px;
+        }
+        .title-main{
+            font-size:24px;
+            font-weight:bold;
+            color:white;
+        }
+        .title-sub{
+            font-size:14px;
+            color:#fff8f8;
+        }
+        .star-img-area{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            margin-left:20px;
+        }
+        /* CSS绘制黑色像素五角星，不再用图片文件 */
+        .pixel-star{
+            width:42px;
+            height:42px;
+            background: #000;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            image-rendering: pixelated;
+        }
+        .star-text{
+            color:#ffd700;
+            font-size:18px;
+            margin-top:3px;
+        }
+        /* 搜索区域 */
+        .search-wrap{
+            max-width:700px;
+            margin:30px auto;
+            display:flex;
+            gap:8px;
+            padding:0 20px;
+        }
+        #search-input{
+            flex:1;
+            padding:10px 16px;
+            border-radius:6px;
+            border:none;
+            font-size:16px;
+            background:#2b2c31;
+            color:#fff;
+        }
+        .search-btn{
+            padding:0 18px;
+            border-radius:6px;
+            border:none;
+            background:#fb7299;
+            color:white;
+            cursor:pointer;
+        }
+        /* 导航卡片容器 */
+        .container{
+            max-width:1000px;
+            margin:0 auto 60px;
+            padding:0 20px;
+        }
+        .nav-title{
+            font-size:20px;
+            margin-bottom:22px;
+            display:flex;
+            align-items:center;
+            gap:8px;
+        }
+        .nav-title::before{
+            content:"";
+            width:4px;
+            height:20px;
+            background:#fb7299;
+        }
+        .card-grid{
+            display:grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+            gap:18px;
+        }
+        .card{
+            background:#242529;
+            border-radius:10px;
+            padding:20px 10px;
+            text-align:center;
+            transition: 0.25s ease;
+            cursor:pointer;
+            text-decoration:none;
+            color:#e5e9ef;
+        }
+        .card:hover{
+            transform: translateY(-4px);
+            background:#2f3035;
+            box-shadow:0 6px 14px #00000044;
+        }
+        .card-icon{
+            font-size:28px;
+            margin-bottom:10px;
+        }
+        /* 底部版权 */
+        footer{
+            text-align:center;
+            padding:30px;
+            color:#888;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <span class="title-main">纸上繁星</span>
+            <span class="title-sub"> 哔哩哔哩关注马哥工业回血</span>
+        </div>
+        <div class="star-img-area">
+    <div style="position:relative;width:48px;height:48px;">
+        <div class="pixel-star" style="width:48px;height:48px;"></div>
+        <!-- 铅笔放在五角星右上角，笔尖朝下 -->
+        <div style="position:absolute; right:-12px; top:-6px; font-size:32px; transform: rotate(-35deg);">✏️</div>
+    </div>
+    <div class="star-text">⭐⭐⭐⭐⭐</div>
+</div>
+
+
+    </div>
+    <!-- 搜索框 -->
+    <div class="search-wrap">
+        <input id="search-input" placeholder="输入关键词搜索，百度/必应" type="text">
+        <button class="search-btn" onclick="searchBaidu()">百度搜索</button>
+        <button class="search-btn" onclick="searchBing()">必应搜索</button>
+    </div>
+    <div class="container">
+        <h2 class="nav-title">快捷导航</h2>
+        <div class="card-grid">
+            <!-- 原有卡片 -->
+            <a class="card" href="https://www.bilibili.com/" target="_blank">
+                <div class="card-icon">📺</div>
+                <div>B站</div>
+            </a>
+            <a class="card" href="https://www.youtube.com/" target="_blank">
+                <div class="card-icon">▶️</div>
+                <div>YouTube</div>
+            </a>
+            <a class="card" href="https://v.qq.com/" target="_blank">
+                <div class="card-icon">🎬</div>
+                <div>腾讯视频</div>
+            </a>
+            <a class="card" href="https://www.iqiyi.com/" target="_blank">
+                <div class="card-icon">🍿</div>
+                <div>爱奇艺</div>
+            </a>
+            <a class="card" href="https://youku.com/" target="_blank">
+                <div class="card-icon">🎞️</div>
+                <div>优酷</div>
+            </a>
+            <a class="card" href="https://www.office.com/" target="_blank">
+                <div class="card-icon">📄</div>
+                <div>微软Office</div>
+            </a>
+            <a class="card" href="https://docs.qq.com/" target="_blank">
+                <div class="card-icon">📑</div>
+                <div>腾讯文档</div>
+            </a>
+            <a class="card" href="https://www.feishu.cn/" target="_blank">
+                <div class="card-icon">💼</div>
+                <div>飞书</div>
+            </a>
+            <a class="card" href="https://www.notion.so/" target="_blank">
+                <div class="card-icon">📒</div>
+                <div>Notion</div>
+            </a>
+            <a class="card" href="https://www.canva.cn/" target="_blank">
+                <div class="card-icon">🎨</div>
+                <div>可画</div>
+            </a>
+            <a class="card" href="https://mc.163.com/" target="_blank">
+                <div class="card-icon">🎮</div>
+                <div>网易我的世界官网</div>
+            </a>
+            <a class="card" href="https://classic.minecraft.net/" target="_blank">
+                <div class="card-icon">🎮</div>
+                <div>网页版我的世界</div>
+            </a>
+            <a class="card" href="https://www.douyin.com/" target="_blank">
+                <div class="card-icon">▶</div>
+                <div>抖音网页版</div>
+            </a>
+            <!-- 新增网盘类 -->
+            <a class="card" href="https://www.aliyundrive.com/" target="_blank">
+                <div class="card-icon">☁️</div>
+                <div>阿里云盘</div>
+            </a>
+            <a class="card" href="https://pan.baidu.com/" target="_blank">
+                <div class="card-icon">🗂️</div>
+                <div>百度网盘</div>
+            </a>
+            <!-- 编程技术网站 -->
+            <a class="card" href="https://www.csdn.net/" target="_blank">
+                <div class="card-icon">💻</div>
+                <div>CSDN</div>
+            </a>
+            <a class="card" href="https://www.runoob.com/" target="_blank">
+                <div class="card-icon">📖</div>
+                <div>菜鸟教程</div>
+            </a>
+            <a class="card" href="https://github.com/" target="_blank">
+                <div class="card-icon">🐙</div>
+                <div>GitHub</div>
+            </a>
+            <a class="card" href="https://gitee.com/" target="_blank">
+                <div class="card-icon">🌱</div>
+                <div>Gitee</div>
+            </a>
+            <a class="card" href="https://juejin.cn/" target="_blank">
+                <div class="card-icon">📰</div>
+                <div>掘金</div>
+            </a>
+            <a class="card" href="https://www.w3school.com.cn/" target="_blank">
+                <div class="card-icon">🌐</div>
+                <div>W3school</div>
+            </a>
+            <!-- 再加其他实用网站 -->
+            <a class="card" href="https://b23.tv/" target="_blank">
+                <div class="card-icon">🔗</div>
+                <div>B站短链</div>
+            </a>
+            <a class="card" href="https://tool.chinaz.com/" target="_blank">
+                <div class="card-icon">🔧</div>
+                <div>站长工具</div>
+            </a>
+            <a class="card" href="https://pixabay.com/" target="_blank">
+                <div class="card-icon">🖼️</div>
+                <div>免费图库</div>
+            </a>
+        </div>
+    </div>
+    <footer>
+        ©2026 马哥工业 | 个人导航主页，仅供??使用
+    </footer>
+    <script>
+        function searchBaidu(){
+            let kw = document.getElementById("search-input").value.trim();
+            if(kw) window.open("https://www.baidu.com/s?wd="+encodeURIComponent(kw));
+        }
+        function searchBing(){
+            let kw = document.getElementById("search-input").value.trim();
+            if(kw) window.open("https://cn.bing.com/search?q="+encodeURIComponent(kw));
+        }
+    </script>
+</body>
+</html>
